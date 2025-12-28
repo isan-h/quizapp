@@ -41,7 +41,6 @@
                         <th>Nom</th>
                         <th>Email</th>
                         <th>Telephone</th>
-                        <th>Date</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -58,7 +57,7 @@
                         <td>{{ $prof->telephone }}</td>
                         <td>
                             <a class='btn btn-success btn-sm' href="{{ route('profs.show', ['id' => $prof->id]) }}">Modifier</a>
-                            <form action="{{ route('prof.destroy', $prof->id) }}" method="POST" style="display:inline;">
+                            <form action="{{ route('profs.destroy', $prof->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button class='btn btn-danger btn-sm' type="submit">Supprimer</button>
@@ -68,7 +67,6 @@
                     </tr>
                     @endforeach
                 </tbody>
-            </table>
             </table>
             {{$listOfProfs->links()}}
 

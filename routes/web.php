@@ -28,7 +28,6 @@ Route::delete('/profs/{id}', [ProfController::class, 'destroy'])->name('profs.de
 
 
 // quizzes routes
-// QUIZZES CRUD
 Route::get('/quizzes', [QuizController::class, 'index'])->name('quizzes.index');
 Route::get('/quizzes/create', [QuizController::class, 'create'])->name('quizzes.create');
 Route::post('/quizzes', [QuizController::class, 'store'])->name('quizzes.store');

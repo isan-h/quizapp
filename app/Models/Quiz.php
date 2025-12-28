@@ -9,11 +9,23 @@ use App\Models\modules;
 class Quiz extends Model
 {
     use HasFactory;
-    protected $fillable = ['titre', 'durree', 'groupe_cible', 'keyword'];
+    protected $fillable = [
+        'titre',
+        'duree',
+        'groupe_cible',
+        'keyword',
+        'prof_id',
+        'module_id',
+        'is_active'
+    ];
 
-    public function quiz()
+    public function prof()
     {
-        return $this->hasMany(modules::class, 'module_id');
-        return $this->hasMany(Profs::class, 'prof_id');
+        return $this->belongsTo(\App\Models\Profs::class, 'prof_id');
+    }
+
+    public function module()
+    {
+        return $this->belongsTo(\App\Models\Modules::class, 'module_id');
     }
 }

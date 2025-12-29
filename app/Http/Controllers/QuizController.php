@@ -26,6 +26,18 @@ class QuizController extends Controller
         return view('UpdateQuiz', compact('SelectedQuiz', 'listOfProfs', 'listOfModules'));
     }
 
+    public function edit($id)
+    {
+        $quiz = Quiz::findOrFail($id);
+
+        // also fetch all modules and profs for dropdowns
+        $profs = \App\Models\Profs::all();
+        $modules = \App\Models\Modules::all();
+
+        return view('UpdateQuiz', compact('quiz', 'profs', 'modules'));
+    }
+
+
     // UPDATE quiz
     public function update(Request $request, $id)
     {

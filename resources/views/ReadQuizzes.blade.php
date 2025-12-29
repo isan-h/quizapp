@@ -5,6 +5,46 @@
     <meta charset="UTF-8">
     <title>Liste des Quizzes</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 20px;
+        }
+
+        .pagination li {
+            list-style: none;
+        }
+
+        .pagination a,
+        .pagination span {
+            padding: 6px 10px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            font-size: 14px;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: 0.2s;
+        }
+
+        .pagination a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .pagination .active span {
+            background: #4f46e5;
+            border-color: #4f46e5;
+            color: white;
+        }
+
+        .pagination .disabled span {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 
 <body class="min-h-screen text-white"
@@ -63,9 +103,12 @@
                 </tbody>
             </table>
 
-            <div class="mt-3">{{ $listOfQuizzes->links() }}</div>
-        </div>
+            <!-- FIXED PAGINATION -->
+            <div class="mt-3">
+                {{ $listOfQuizzes->links() }}
+            </div>
 
+        </div>
     </div>
 
 </body>

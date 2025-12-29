@@ -6,6 +6,44 @@
     <title>Etudiants</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <style>
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 20px;
+        }
+
+        .pagination li {
+            list-style: none;
+        }
+
+        .pagination a,
+        .pagination span {
+            padding: 6px 10px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            font-size: 14px;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: 0.2s;
+        }
+
+        .pagination a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .pagination .active span {
+            background: #4f46e5;
+            border-color: #4f46e5;
+            color: white;
+        }
+
+        .pagination .disabled span {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
         body {
             background: radial-gradient(circle at top left, #1e1b4b, #0f172a);
             color: white;

@@ -34,3 +34,4 @@ Route::post('/quizzes', [QuizController::class, 'store'])->name('quizzes.store')
 Route::get('/quizzes/{id}', [QuizController::class, 'edit'])->name('quizzes.edit');
 Route::put('/quizzes/{id}', [QuizController::class, 'update'])->name('quizzes.update');
 Route::delete('/quizzes/{id}', [QuizController::class, 'destroy'])->name('quizzes.destroy');
+Route::get('/quiz/{id}/edit', [QuizController::class, 'edit'])->name('quiz.edit');

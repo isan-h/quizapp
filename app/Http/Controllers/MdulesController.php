@@ -44,5 +44,4 @@ class ModulesController extends Controller
         $Module->save();
         return redirect('/modules')->with('success', 'Module créé avec succès!');
     }
-    
 }

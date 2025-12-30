@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\ProfController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\GroupeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,3 +36,11 @@ Route::get('/quizzes/{id}', [QuizController::class, 'edit'])->name('quizzes.edit
 Route::put('/quizzes/{id}', [QuizController::class, 'update'])->name('quizzes.update');
 Route::delete('/quizzes/{id}', [QuizController::class, 'destroy'])->name('quizzes.destroy');
 Route::get('/quiz/{id}/edit', [QuizController::class, 'edit'])->name('quiz.edit');
+
+// GROUPES CRUD
+Route::get('/groupes', [GroupeController::class, 'index'])->name('groupes.index');
+Route::get('/groupes/create', [GroupeController::class, 'create'])->name('groupes.create');
+Route::post('/groupes', [GroupeController::class, 'store'])->name('groupes.store');
+Route::get('/groupes/{id}/edit', [GroupeController::class, 'edit'])->name('groupes.edit');
+Route::put('/groupes/{id}', [GroupeController::class, 'update'])->name('groupes.update');
+Route::delete('/groupes/{id}', [GroupeController::class, 'destroy'])->name('groupes.destroy');

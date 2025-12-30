@@ -15,22 +15,11 @@ class QuizController extends Controller
         $listOfQuizzes = Quiz::with(['prof', 'module'])->paginate(5);
         return view('ReadQuizzes', compact('listOfQuizzes'));
     }
-
-    // SHOW single quiz + dropdowns
-    public function show($id)
-    {
-        $SelectedQuiz = Quiz::findOrFail($id);
-        $listOfProfs = Profs::all();
-        $listOfModules = Modules::all();
-
-        return view('UpdateQuiz', compact('SelectedQuiz', 'listOfProfs', 'listOfModules'));
-    }
-
+   
+    // SHOW single quiz for editing
     public function edit($id)
     {
-        $quiz = Quiz::findOrFail($id);
-
-        // also fetch all modules and profs for dropdowns
+        $quiz = Quiz::find($id);
         $profs = \App\Models\Profs::all();
         $modules = \App\Models\Modules::all();
 
@@ -46,7 +35,7 @@ class QuizController extends Controller
             'duree' => 'required|integer',
         ]);
 
-        $quiz = Quiz::findOrFail($id);
+        $quiz = Quiz::find($id);
 
         $quiz->titre = $request->titre;
         $quiz->duree = $request->duree;
@@ -63,12 +52,11 @@ class QuizController extends Controller
     // DELETE quiz
     public function destroy($id)
     {
-        $quiz = Quiz::findOrFail($id);
+        $quiz = Quiz::find($id);
         $quiz->delete();
         return redirect('/quizzes')->with('success', 'Quiz supprimé avec succès!');
     }
 
-    // CREATE quiz FORM + dropdowns
     public function create()
     {
         $listOfProfs = Profs::all();

@@ -8,5 +8,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Profs extends Model
 {
     use HasFactory;
-    protected $fillable = ['nom', 'email', 'telephone', 'mot_de_passe'];
+    protected $fillable = [
+        'nom',
+        'email',
+        'telephone',
+        'mot_de_passe'
+    ];
+
+    public function progs()
+    {
+        return $this->hasMany(Quiz::class, 'prof_id');
+    }
 }

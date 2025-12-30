@@ -19,7 +19,7 @@ class EtudiantController extends Controller
     public function show(Request $request)
     {
         $idEtudiant = $request->id;
-        $SelectedEtudiant = Etudiant::findOrFail($idEtudiant); // safer than find
+        $SelectedEtudiant = Etudiant::find($idEtudiant); // safer than find
         return view('showEtudiant', compact('SelectedEtudiant'));
     }
 
@@ -27,7 +27,7 @@ class EtudiantController extends Controller
     public function update(Request $request)
     {
         $idEtudiant = $request->id;
-        $Etudiant = Etudiant::findOrFail($idEtudiant);
+        $Etudiant = Etudiant::find($idEtudiant);
 
         $Etudiant->prenom = $request->input('prenom');
         $Etudiant->nom = $request->input('nom');
@@ -43,26 +43,11 @@ class EtudiantController extends Controller
     public function destroy(Request $request)
     {
         $idEtudiant = $request->id;
-        $Etudiant = Etudiant::findOrFail($idEtudiant);
+        $Etudiant = Etudiant::find($idEtudiant);
         $Etudiant->delete();
 
         return redirect('/etudiants')->with('success', 'Étudiant supprimé avec succès!');
     }
-
-    // Create a new student
-    // public function create(Request $request)
-    // {
-    //     $Etudiant = new Etudiant();
-
-    //     $Etudiant->prenom = $request->input('prenom');
-    //     $Etudiant->nom = $request->input('nom');
-    //     $Etudiant->email = $request->input('email');
-    //     $Etudiant->num_groupe = $request->input('num_groupe');
-
-    //     $Etudiant->save();
-
-    //     return redirect('/etudiants')->with('success', 'Étudiant créé avec succès!');
-    // }
 
     public function create()
     {

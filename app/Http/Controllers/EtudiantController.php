@@ -19,7 +19,7 @@ class EtudiantController extends Controller
     public function show(Request $request)
     {
         $idEtudiant = $request->id;
-        $SelectedEtudiant = Etudiant::find($idEtudiant); // safer than find
+        $SelectedEtudiant = Etudiant::find($idEtudiant); 
         return view('showEtudiant', compact('SelectedEtudiant'));
     }
 
